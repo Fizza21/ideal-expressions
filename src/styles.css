@@ -1,0 +1,158 @@
+/* 🎨 Color Variables */
+:root {
+  --pink-50: #FFDDE2;
+  --peach-50: #EFD6D2;
+  --pink-300: #FF8CC6;
+  --pink-600: #DE369D;
+}
+
+/* 🔹 Global Reset & Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--pink-50);
+  color: #222;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* 🔹 Layout Helpers */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* 🔹 Buttons */
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary {
+  background: var(--pink-600);
+  color: white;
+}
+
+.btn-outline {
+  background: white;
+  border: 2px solid var(--pink-600);
+  color: var(--pink-600);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* 🔹 Navbar */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: white;
+  border-bottom: 4px solid var(--peach-50);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-weight: 900;
+  color: var(--pink-600);
+  font-size: 24px; /* Increased font size */
+}
+
+.navlinks {
+  display: flex;
+  gap: 20px; /* Increased spacing */
+}
+
+.navlinks a {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.badge {
+  background: var(--peach-50);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+/* 🔹 Header Banner */
+.header {
+  background: linear-gradient(135deg, var(--pink-300), var(--pink-600));
+  color: white;
+  padding: 48px 0;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+/* 🔹 Cards */
+.card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* 🔹 Inputs */
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--peach-50);
+  border-radius: 12px;
+}
+
+/* 🔹 Price Text */
+.price {
+  color: var(--pink-600);
+  font-weight: 800;
+}
+
+/* 🔹 Footer */
+.footer {
+  padding: 24px;
+  text-align: center;
+  color: #555;
+}
+
+/* 🔹 Responsive */
+@media (max-width: 640px) {
+  .header h1 {
+    font-size: 28px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px; /* yeh products ke beech ka gap set karega */
+}
