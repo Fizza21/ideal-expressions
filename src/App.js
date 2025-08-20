@@ -12,14 +12,23 @@ function About() {
   return (
     <div className="container">
       <h1>About Us</h1>
-      <p>
-        Welcome to <strong>Ideal Expressions</strong> — your trusted destination
-        for authentic beauty products. We pride ourselves on delivering only
-        original items, ensuring the highest quality for our customers.
-        Thousands of satisfied buyers trust us for our commitment to excellence
-        and quick delivery. Shop with confidence and experience the Ideal
-        Expressions difference!
-      </p>
+        {/* Welcome to <strong>Ideal Expressions</strong>  */}
+      <div class="about">
+  <p>At Ideal Expressions, we believe luxury is not just a choice — it’s a lifestyle.</p>
+  
+  <p>As a trusted destination for imported high-end cosmetics, premium fashion, and exclusive lifestyle essentials, we handpick only the best to match your taste for elegance.</p>
+  
+  <p>Every product we offer is 100% genuine, authentic, and sourced from world-renowned brands, ensuring you get the quality you deserve.</p>
+  
+  <p>Whether you’re searching for the latest luxury makeup trends, timeless skincare formulas, or fashion pieces that make a statement, Ideal Expressions brings it all together under one roof.</p>
+  
+  <p>We don’t just sell products — we deliver confidence, sophistication, and a seamless shopping experience that redefines what it means to express yourself.</p>
+  
+  <p>Because here, it’s more than shopping. It’s about embracing your individuality, celebrating your style, and living your best iconic life.</p>
+  
+  <p class="tagline">✨ Ideal Expressions — Be Iconic, Be You.</p>
+</div>
+
     </div>
   );
 }
@@ -31,11 +40,15 @@ function Home() {
       {/* Header */}
       <div className="header">
         <div className="container">
-          <h1>Ideal Expressions</h1>
-          <p>Modern beauty store — Quick checkout via PayPal or Cash on Delivery.</p>
+          <h1>Hi Everyone!</h1>
+          <p>
+            Welcome to <strong>Ideal Expressions</strong>, where style meets authenticity. We specialize in importing 100% genuine high-end cosmetics, fashion apparel, and lifestyle products, offering you the best of global brands under one roof. 
+            With us, you’re not just shopping — you’re investing in quality, elegance, and timeless expression. 
+            Discover luxury. Celebrate your uniqueness. <strong>Be Iconic, Be You!</strong>
+            </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
             <Link to="/products" className="btn btn-primary">Shop Products</Link>
-            <a href="https://vercel.com" target="_blank" rel="noreferrer" className="btn btn-outline">Free Hosting</a>
+            {/* <a href="https://vercel.com" target="_blank" rel="noreferrer" className="btn btn-outline">Free Hosting</a> */}
           </div>
         </div>
       </div>

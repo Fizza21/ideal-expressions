@@ -42,11 +42,11 @@ export default function ProductDetail() {
 </div>
       {/* Product Details */}
       <div>
-        <h2 style={{ marginTop: 0 }}>{product.name}</h2>
-        <div className="price" style={{ margin: '12px 0', fontSize: 18, fontWeight: 'bold' }}>
+        <h2 style={{ marginTop: 0, fontSize: 30 }}>{product.name}</h2>
+        <div className="price" style={{ margin: '12px 0', fontSize: 30, fontWeight: 'bold' }}>
           PKR {product.price.toLocaleString()}
         </div>
-        <p style={{ color: '#555', fontSize: 15 }}>{product.description}</p>
+        <p style={{ color: '#555', fontSize: 20 }}>{product.description}</p>
 
         {/* Add to Cart Button */}
         <button

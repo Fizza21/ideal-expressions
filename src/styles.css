@@ -156,3 +156,73 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px; /* yeh products ke beech ka gap set karega */
 }
+
+p {
+  margin-bottom: 1rem;   /* har para ke beech spacing */
+  line-height: 1.6;      /* readable spacing */
+  text-align: justify;   /* dono side align for neat look */
+  font-size: 18px;
+}
+
+
+.about .tagline {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+  color: #FF78A0; /* optional highlight */
+}
+
+
+.about-heading {
+  text-align: center;  /* ya left / right jahan align chahiye */
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin: 20px auto;
+  max-width: 900px;  /* text ek line me chipak na jaye */
+}
+
+/* Checkout Page */
+.checkout-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 16px;
+}
+
+.customer-card,
+.payment-card {
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.customer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.payment-box {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 8px;
+}

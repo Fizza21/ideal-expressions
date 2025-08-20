@@ -25,7 +25,7 @@ export default function Navbar() {
             fontWeight: '900'
           }}
         >
-          Ideal Expressions
+          IDEAL EXPRESSIONS
         </Link>
 
         {/* Links spaced out */}
