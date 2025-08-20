@@ -77,6 +77,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 10;
+  flex-wrap: nowrap; /* Ensure items don't wrap */
 }
 
 .brand {
@@ -233,24 +234,30 @@ p {
 }
 
 
+/* Cart button ko baaki buttons ke saath align karne ke liye */
+.cart-button {
+  margin-top: 8px;
+  width: 100%;
+  max-width: 200px; /* Maximum width set karo */
+  align-self: flex-end; /* Align to the end */
+}
 
-/* ---------------- Mobile Navbar Horizontal ---------------- */
+
+
+/* Mobile Navbar Horizontal */
 @media (max-width: 640px) {
   .nav {
-    flex-wrap: wrap; /* allow brand + links to wrap if needed */
-    gap: 12px; /* thoda gap for wrapping */
+    flex-wrap: nowrap; /* items ek line me rahein */
+    justify-content: space-between;
   }
 
   .navlinks {
-    flex-direction: row !important; /* keep links horizontal */
-    flex-wrap: wrap; /* allow wrapping if screen is small */
-    justify-content: flex-start;
+    flex-direction: row !important; /* horizontal links */
     gap: 12px; /* space between links */
-    width: 100%; /* take full width under brand if wrapped */
   }
 
   .brand {
-    flex-basis: 100%; /* brand on top in small screens */
-    margin-bottom: 8px;
+    flex-basis: auto; /* normal brand size */
+    margin-bottom: 0;
   }
 }
