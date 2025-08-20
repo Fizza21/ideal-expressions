@@ -13,7 +13,8 @@ export default function Navbar() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          flexWrap: 'wrap'
         }}
       >
         {/* Brand name bigger */}

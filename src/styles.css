@@ -226,3 +226,31 @@ p {
   width: 100%;
   margin-top: 8px;
 }
+
+
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+
+
+/* ---------------- Mobile Navbar Horizontal ---------------- */
+@media (max-width: 640px) {
+  .nav {
+    flex-wrap: wrap; /* allow brand + links to wrap if needed */
+    gap: 12px; /* thoda gap for wrapping */
+  }
+
+  .navlinks {
+    flex-direction: row !important; /* keep links horizontal */
+    flex-wrap: wrap; /* allow wrapping if screen is small */
+    justify-content: flex-start;
+    gap: 12px; /* space between links */
+    width: 100%; /* take full width under brand if wrapped */
+  }
+
+  .brand {
+    flex-basis: 100%; /* brand on top in small screens */
+    margin-bottom: 8px;
+  }
+}
