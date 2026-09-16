@@ -6,7 +6,7 @@ const products = [
 {"id": 5,  "name": "L'Oreal Paris Cosmetics True Match Super-Blendable Multi-Use Concealer", 	"price": 2850, 	"description": "Shade: Medium (n-56) -- Lightweight, blendable concealer that covers dark circles and blemishes naturally.", 	"image": "5.png"},
 {"id": 6,  "name": "Tarte Big Ego Mascara", 	"price": 6850, 	"description": "Ultra-black mascara that lifts and lengthens for dramatic volume.", 	"image": "6.png"},
 {"id": 7,  "name": "Huda Beauty The Overachiever Concealer", 	"price": 6550, 	"description": "Shade: Garaham Cracker (16G) High-coverage concealer enriched with skincare ingredients for flawless correction.", 	"image": "7.png"},
-{"id": 8,  "name": "Soap & Glory Clean On Me – Travel Size", 	"price": 2550, 	"description": "Creamy, moisturizing body wash with a refreshing scent.", 	"image": "8.png"},
+{"id": 8,  "name": "Soap & Glory Clean On Me Body Wash– Travel Size", 	"price": 2550, 	"description": "Creamy, moisturizing body wash with a refreshing scent.", 	"image": "8.png"},
 {"id": 9,  "name": "Revlon Insta Filter Foundation", 	"price": 5500, 	"description": "Shade: Porcelain (130) -- Medium-coverage foundation with a built-in sponge for seamless blending.", 	"image": "9.png"},
 {"id": 10,  "name": "Tarte Shape Tape", 	"price": 8550, 	"description": "Shade: Porcelain (130) -- Full-coverage concealer with a matte finish and 16-hour wear.", 	"image": "10.webp"},
 {"id": 11,  "name": "Mac Patent Paint Lip Lacquer", 	"price": 6850, 	"description": "Shade: Slick Flick (593) -- High-shine lip color with intense pigmentation and a lacquered finish.", 	"image": "11.png"},
@@ -62,4 +62,80 @@ const products = [
   
 ];
 
-export default products;
+// Automatically assign categories
+
+const categorizedProducts = products.map((product) => {
+
+  const name = product.name.toLowerCase();
+
+
+  let category = "face";
+
+
+  // LIPS
+  if (
+    name.includes("lip") ||
+    name.includes("gloss") ||
+    name.includes("lacquer") ||
+    name.includes("liquid matte") ||
+    name.includes("matte lipstick") ||
+    name.includes("lipstick") ||
+    name.includes("chubby stick") ||
+    name.includes("vivid")
+  ) {
+
+    category = "lips";
+
+  }
+
+
+  // EYES
+  else if (
+    name.includes("mascara") ||
+    name.includes("eye") ||
+    name.includes("pencil") ||
+    name.includes("eyeliner")
+  ) {
+
+    category = "eyes";
+
+  }
+
+
+  // BODY
+  else if (
+    name.includes("body") ||
+    name.includes("wash") ||
+    name.includes("serum") ||
+    name.includes("hair")
+  ) {
+
+    category = "body";
+
+  }
+
+
+  // FACE
+  else if (
+    name.includes("foundation") ||
+    name.includes("concealer") ||
+    name.includes("blush") ||
+    name.includes("primer") ||
+    name.includes("setting spray") ||
+    name.includes("glow stick")
+  ) {
+
+    category = "face";
+
+  }
+
+
+  return {
+    ...product,
+    category
+  };
+
+});
+
+
+export default categorizedProducts;

@@ -1,46 +1,222 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import ProductCard from "./ProductCard";
+import products from "../data/products";
 
-export default function Home({ products }) {
+export default function Home() {
+
+  const categories = [
+    {
+      name:"Lips",
+      image:"/images/21.jpeg"
+    },
+    {
+      name:"Face",
+      image:"/images/9.png"
+    },
+    {
+      name:"Eyes",
+      image:"/images/6.png"
+    },
+    {
+      name:"Body",
+      image:"/images/8.png"
+    }
+  ];
+
+
   return (
-    <div className="container">
-      <h1 style={{ color: 'var(--pink-600)', margin: '20px 0' }}>
-        Featured Products
-      </h1>
 
-      <div
-        className="grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '25px'
-        }}
-      >
-        {products.slice(0, 3).map((p) => (
+    <div>
+
+
+      {/* LUXURY HERO SECTION */}
+
+<section className="luxury-hero">
+
+
+  <div className="hero-text">
+
+
+    <p className="hero-small">
+      PREMIUM BEAUTY COLLECTION
+    </p>
+
+
+    <h1>
+      Beauty That
+      <br/>
+      Defines You
+    </h1>
+
+
+    <p className="hero-description">
+
+      Discover authentic luxury cosmetics
+      and premium beauty essentials from
+      your favourite global brands.
+
+    </p>
+
+
+    <Link
+      to="/products"
+      className="btn btn-primary"
+    >
+      Shop Collection
+    </Link>
+
+
+  </div>
+
+
+
+  <div className="hero-image">
+
+    <img
+      src="/images/21.jpeg"
+      alt="Luxury Beauty"
+    />
+
+  </div>
+
+
+</section>
+
+
+
+      {/* CATEGORY SECTION */}
+
+      <section className="container">
+
+        <h2 className="section-title">
+          Shop By Category
+        </h2>
+
+
+        <div className="category-grid">
+
+
+        {categories.map((cat)=>(
+
           <Link
-            key={p.id}
-            to={`/product/${p.id}`}
-            className="card"
-            style={{ textDecoration: 'none', color: 'inherit' }}
+            to="/products"
+            key={cat.name}
+            className="category-card"
           >
-            <img
-              src={`/images/${p.image}`}
-              alt={p.name}
-              style={{ height: 200, width: '100%', objectFit: 'cover' }}
-            />
-            <div style={{ padding: '10px' }}>
-              <h3>{p.name}</h3>
-              <p className="price">PKR {p.price.toLocaleString()}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
 
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
-        <Link to="/products" className="btn btn-primary">
-          View More Products
-        </Link>
-      </div>
+            <img
+              src={cat.image}
+              alt={cat.name}
+            />
+
+            <h3>
+              {cat.name}
+            </h3>
+
+
+          </Link>
+
+        ))}
+
+
+        </div>
+
+
+      </section>
+
+
+
+
+      {/* BEST SELLERS */}
+
+      <section className="container">
+
+
+        <h2 className="section-title">
+          Best Sellers
+        </h2>
+
+
+        <div className="grid">
+
+        {
+          products.slice(0,4).map((p)=>(
+            
+            <ProductCard
+              key={p.id}
+              product={p}
+            />
+
+          ))
+        }
+
+
+        </div>
+
+
+        <div className="center">
+
+          <Link 
+          to="/products"
+          className="btn btn-primary"
+          >
+
+          View All Products
+
+          </Link>
+
+        </div>
+
+
+      </section>
+
+
+
+
+      {/* BRAND SECTION */}
+
+      <section className="brand-section">
+
+
+        <h2>
+          Why Choose Ideal Expressions?
+        </h2>
+
+
+        <p>
+          Authentic luxury products, carefully selected
+          to bring confidence, elegance and timeless beauty.
+        </p>
+
+
+        <div className="benefits">
+
+
+          <div>
+            Authentic Products
+          </div>
+
+
+          <div>
+            Premium Quality
+          </div>
+
+
+          <div>
+            Trusted Shopping
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+
     </div>
+
   );
+
 }
