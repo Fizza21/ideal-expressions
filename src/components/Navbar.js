@@ -80,6 +80,9 @@ export default function Navbar() {
             About
           </Link>
 
+          <Link to="/contact">
+            Contact
+          </Link>
 
           <Link to="/cart">
 

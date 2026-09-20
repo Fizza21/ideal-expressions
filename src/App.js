@@ -9,6 +9,7 @@ import ProductDetail from './components/ProductDetail';
 import Home from './components/Home';
 import CategoryTabs from './components/CategoryTabs';
 import CategoryPage from './components/CategoryPage';
+import Contact from './components/Contact';
 
 // -------------------- About Page --------------------
 function About() {
@@ -227,6 +228,7 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <footer className="footer">
         © {new Date().getFullYear()} Ideal Expressions — Built with ❤️
