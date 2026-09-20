@@ -11,6 +11,12 @@ clear
 }=React.useContext(CartContext);
 
 
+const deliveryCharges = 200;
+
+const finalTotal = total + deliveryCharges;
+
+
+
 const [form,setForm]=useState({
 name:"",
 phone:"",
@@ -21,8 +27,11 @@ txnId:""
 
 const [loading,setLoading]=useState(false);
 
+const [success,setSuccess]=useState(false);
+
 
 const formRef=useRef(null);
+
 
 
 const disabled =
@@ -61,7 +70,7 @@ method
 
 fd.append(
 "total",
-`PKR ${total.toLocaleString()}`
+`PKR ${finalTotal.toLocaleString()}`
 );
 
 
@@ -88,17 +97,6 @@ body:fd
 if(res.ok){
 
 
-localStorage.setItem(
-"lastOrder",
-JSON.stringify({
-cart,
-total,
-form,
-method
-})
-);
-
-
 clear();
 
 
@@ -110,28 +108,24 @@ txnId:""
 });
 
 
-alert(
-"Order placed successfully"
-);
-
-
-}else{
-
-alert(
-"Order failed"
-);
-
-}
+setSuccess(true);
 
 
 
 }
 
-catch(error){
+else{
 
-alert(
-"Network error"
-);
+alert("Order failed");
+
+}
+
+
+}
+
+catch{
+
+alert("Network error");
 
 }
 
@@ -143,6 +137,7 @@ setLoading(false);
 
 
 };
+
 
 
 
@@ -160,22 +155,30 @@ alert(
 
 
 
+
 return(
 
 <div className="container checkout-page">
 
 
-<h1>
+
+<h1 className="checkout-heading">
 Checkout
 </h1>
 
 
 
-<div className="checkout-grid">
+
+<div className="checkout-layout-new">
 
 
 
-<div className="checkout-card">
+<div>
+
+
+
+
+<div className="checkout-box">
 
 
 <h2>
@@ -188,9 +191,8 @@ Customer Details
 
 
 <input
-className="input"
+className="checkout-input"
 placeholder="Full Name"
-name="name"
 value={form.name}
 onChange={
 e=>setForm({
@@ -203,9 +205,8 @@ name:e.target.value
 
 
 <input
-className="input"
+className="checkout-input"
 placeholder="Phone Number"
-name="phone"
 value={form.phone}
 onChange={
 e=>setForm({
@@ -218,18 +219,22 @@ phone:e.target.value
 
 
 <textarea
-className="input"
+
+className="checkout-input"
+
 placeholder="Delivery Address"
-name="address"
-rows="5"
+
 value={form.address}
+
 onChange={
 e=>setForm({
 ...form,
 address:e.target.value
 })
 }
+
 />
+
 
 
 </form>
@@ -242,7 +247,8 @@ address:e.target.value
 
 
 
-<div className="checkout-card payment">
+
+<div className="checkout-box">
 
 
 <h2>
@@ -251,73 +257,86 @@ Payment
 
 
 
-<div className="payment-option">
-
-
 <h3>
 Easypaisa
 </h3>
 
 
+
 <p>
 Send payment to:
 <br/>
+
 <strong>
 03351337794
 </strong>
+
 </p>
 
 
 
+
 <button
-className="btn btn-outline"
+
+className="copy-payment"
+
 onClick={copyNumber}
+
 >
+
 Copy Number
+
 </button>
 
 
 
+
+
 <input
-className="input"
+
+className="checkout-input"
+
 placeholder="Transaction ID"
+
 value={form.txnId}
+
 onChange={
 e=>setForm({
 ...form,
 txnId:e.target.value
 })
 }
+
 />
 
 
+
+
 <button
-className="btn btn-primary btn-block"
-disabled={disabled}
-onClick={()=>
-submitOrder(
-"Easypaisa"
-)
-}
+
+className="checkout-submit"
+
+disabled={disabled || loading}
+
+onClick={()=>submitOrder("Easypaisa")}
+
 >
 
-Confirm Payment
+{
+loading ? "Processing..." : "Confirm Payment"
+}
 
 </button>
 
 
-</div>
 
 
-
-
-
-<div className="payment-option">
 
 
 <h3>
 Cash On Delivery
 </h3>
+
 
 
 <p>
@@ -327,41 +346,235 @@ Pay when your order arrives.
 
 
 <button
-className="btn btn-primary btn-block"
-disabled={disabled}
-onClick={()=>
-submitOrder(
-"Cash On Delivery"
-)
-}
+
+className="checkout-submit"
+
+disabled={disabled || loading}
+
+onClick={()=>submitOrder("Cash On Delivery")}
+
 >
 
-Place COD Order
+{
+loading ? "Processing..." : "Place COD Order"
+}
 
 </button>
 
 
-</div>
-
-
-
-</div>
-
 
 
 </div>
 
 
+</div>
 
 
-<div className="checkout-total">
 
-Total:
+
+
+
+
+
+
+<div className="checkout-summary">
+
+
+
+<h2>
+Order Summary
+</h2>
+
+
+
+
+{
+cart.map(item=>(
+
+
+<div
+
+className="checkout-product"
+
+key={item.id}
+
+>
+
+
+<img
+
+src={`/images/${item.image}`}
+
+alt={item.name}
+
+/>
+
+
+<div>
+
+<p>
+{item.name}
+</p>
+
 <span>
-PKR {total.toLocaleString()}
+Qty: {item.qty}
 </span>
 
+
 </div>
+
+
+
+<b>
+PKR {(item.price*item.qty).toLocaleString()}
+</b>
+
+
+
+</div>
+
+
+))
+
+}
+
+
+
+
+
+<hr/>
+
+
+
+
+<div className="checkout-row">
+
+<span>
+Subtotal
+</span>
+
+
+<b>
+PKR {total.toLocaleString()}
+</b>
+
+
+</div>
+
+
+
+
+
+<div className="checkout-row">
+
+<span>
+Delivery Charges
+</span>
+
+
+<b>
+PKR 200
+</b>
+
+
+</div>
+
+
+
+
+
+<div className="checkout-final">
+
+<span>
+Total
+</span>
+
+
+<strong>
+PKR {finalTotal.toLocaleString()}
+</strong>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+{
+success && (
+
+<div className="success-overlay">
+
+<div className="success-modal">
+
+
+<div className="success-icon">
+✓
+</div>
+
+
+<h2>
+Order Placed Successfully!
+</h2>
+
+
+<p>
+Thank you for shopping with Ideal Expressions.
+Your order has been received.
+</p>
+
+
+
+<div className="success-status">
+
+<div className="status-icon">
+📦
+</div>
+
+
+<div>
+
+<small>
+ORDER STATUS
+</small>
+
+<br/>
+
+<b>
+You will receive a confirmation soon.
+</b>
+
+</div>
+
+
+</div>
+
+
+
+<button
+onClick={()=>setSuccess(false)}
+>
+
+Continue Shopping
+
+</button>
+
+
+
+</div>
+
+</div>
+
+)
+}
+
 
 
 
@@ -369,5 +582,6 @@ PKR {total.toLocaleString()}
 
 
 );
+
 
 }
